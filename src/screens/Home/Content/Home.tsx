@@ -58,10 +58,6 @@ export function HomeContent(props: HomeContentProps) {
             </Stack>
           </Stack>
           <Stack direction="row" justifyContent="space-between" alignItems="center">
-            <FormControlLabel
-              title="Renders the result in this page"
-              control={<Checkbox value={isInPageRendering} onChange={(_, checked) => setIsInpageRendering(checked)} />}
-              label="In-Page Rendering" />
             <Button
               type="submit"
               variant="contained"
@@ -69,11 +65,15 @@ export function HomeContent(props: HomeContentProps) {
               startIcon={isLoading ? <CircularProgress size={16} /> : <IconSearch size={16} />}>
               Display Weather
             </Button>
+            <FormControlLabel
+              title="Renders the result in this page"
+              control={<Checkbox value={isInPageRendering} onChange={(_, checked) => setIsInpageRendering(checked)} />}
+              label="In-Page Rendering" />
           </Stack>
         </Stack>
       </form>
       {
-        (isInPageRendering && forecast) && <Weather forecast={forecast}/>
+        (isInPageRendering && forecast) && <Weather forecast={forecast} />
       }
     </Stack>
   )
