@@ -14,13 +14,13 @@ export function NavBar() {
       }
     });
   }
-  
+
   return (
     <>
       <Stack gap={2} p={1} width="100%">
-        <Stack direction="row" alignItems="center" justifyContent="space-between">
+        <Stack direction="row" alignItems="center" justifyContent="space-between" flexWrap="wrap" rowGap={2}>
           <Stack direction="row" gap={2} alignItems="center">
-            <img src="/images/logo.png" width={100} height={32} alt="logo" />
+            <img src="/images/logo.png" width={103} height={46} alt="logo" />
             <Typography variant="h5">
               Weather Forecast
             </Typography>
