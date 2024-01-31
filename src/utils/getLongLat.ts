@@ -8,6 +8,6 @@ export async function getLongLat(cityName: string) {
   } catch {
     throw "An Error has occured while fetching City";
   }
-  const respData = (await res.json()) as GeoData;
+  const respData = (await res.json()) as GeoData[];
   return respData;
 }
