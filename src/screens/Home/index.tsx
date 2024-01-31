@@ -52,12 +52,12 @@ export function Home() {
   return (
     <Stack gap={2}>
       {main}
-      <Stack direction="row" justifyContent="space-between" width="100%">
+      <Stack direction="row" gap={2}>
         {!isAuthenticated && <Button variant="outlined" onClick={onLoginClick}>Login</Button>}
         {(isAuthenticated && content !== PageContent.LANDING) && <Button variant="outlined" onClick={onBackClick}>Landing</Button>}
-        <Stack direction="row" gap={2}>
-          {(isAuthenticated && content !== PageContent.HOME) && <Button variant="contained" onClick={onHomeClick}>Home</Button>}
-        </Stack>
+        {(isAuthenticated && content !== PageContent.HOME) && (
+            <Button variant="contained" onClick={onHomeClick}>{content === PageContent.WEATHER ? "BACK" : "HOME"}</Button>
+          )}
       </Stack>
     </Stack>
   );
