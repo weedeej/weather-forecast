@@ -8,7 +8,7 @@ export async function fetchForecast(cityName: string) {
 
   let resp: Response | undefined;
   try {
-    resp = await fetch(`${apiBaseUrl}/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${weatherApiKey}`);
+    resp = await fetch(`${apiBaseUrl}/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&cnt=11&appid=${weatherApiKey}`);
   } catch {
     throw "An error has occured while fetching Forecast";
   }

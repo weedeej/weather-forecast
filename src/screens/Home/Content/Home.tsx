@@ -6,14 +6,15 @@ import { fetchForecast } from "../../../utils";
 
 type HomeContentProps = {
   setWeatherForecast: (forecast: Forecast | null) => void;
+  displayWeather: () => void;
 }
 export function HomeContent (props: HomeContentProps) {
-  const {setWeatherForecast} = props;
-  const {user} = useAuth0();
+  const {setWeatherForecast, displayWeather} = props;
   const [cityInput, setCityInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const {user, isAuthenticated} = useAuth0();
 
-  if (!user) {
+  if (!isAuthenticated || !user) {
     window.location.reload();
     return <CircularProgress/>
   }
@@ -24,7 +25,11 @@ export function HomeContent (props: HomeContentProps) {
     setIsLoading(true);
     fetchForecast(cityInput)
       .then(setWeatherForecast)
-      .catch(alert);
+      .catch(alert)
+      .finally(() => {
+        setIsLoading(false);
+        displayWeather();
+      });
   }
 
   return (
