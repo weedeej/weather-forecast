@@ -1,9 +1,9 @@
 import { useAuth0 } from "@auth0/auth0-react"
-import { Box, Button, Checkbox, CircularProgress, FormControlLabel, MenuItem, Select, Stack, TextField, Typography } from "@mui/material";
+import { Button, Checkbox, CircularProgress, FormControlLabel, Link, MenuItem, Select, Stack, TextField, Typography } from "@mui/material";
 import { Forecast } from "../../../types";
 import { useState } from "react";
 import { fetchForecast } from "../../../utils";
-import { IconHelpCircleFilled, IconSearch } from "@tabler/icons-react";
+import { IconBrandGithubFilled, IconSearch } from "@tabler/icons-react";
 import { Weather } from "./Weather";
 
 type HomeContentProps = {
@@ -39,9 +39,14 @@ export function HomeContent(props: HomeContentProps) {
   }
 
   return (
-    <Stack gap={1} alignItems="center">
-      <Typography fontWeight={700}>{name}</Typography>
-      <Typography fontWeight={700}>https://github.com/{nickname}</Typography>
+    <Stack gap={1}>
+      <Typography fontWeight={700}>Welcome Back, {name}!</Typography>
+      <Stack direction="row" gap={1} alignItems="center">
+        <IconBrandGithubFilled /><Typography fontWeight={700}>Github: </Typography>
+        <Link href={`https://github.com/${nickname}`} sx={{ textDecoration: "none" }}>
+          <Typography>https://github.com/{nickname}</Typography>
+        </Link>
+      </Stack>
       <form onSubmit={onSubmit} style={{ width: "100%" }}>
         <Stack gap={1} width="100%">
           <Stack direction="row" gap={2}>
@@ -57,7 +62,7 @@ export function HomeContent(props: HomeContentProps) {
               </Select>
             </Stack>
           </Stack>
-          <Stack direction="row" justifyContent="space-between" alignItems="center">
+          <Stack direction="row" gap={2} justifyContent="space-between" alignItems="center">
             <Button
               type="submit"
               variant="contained"
@@ -68,7 +73,7 @@ export function HomeContent(props: HomeContentProps) {
             <FormControlLabel
               title="Renders the result in this page"
               control={<Checkbox value={isInPageRendering} onChange={(_, checked) => setIsInpageRendering(checked)} />}
-              label="In-Page Rendering" />
+              label={<Typography noWrap>In-Page Rendering</Typography>} />
           </Stack>
         </Stack>
       </form>
