@@ -43,7 +43,7 @@ export function HomeContent(props: HomeContentProps) {
       <Typography fontWeight={700}>Welcome Back, {name}!</Typography>
       <Stack direction="row" gap={1} alignItems="center">
         <Box sx={{display: {xs: "none", md: "block"}}}><IconBrandGithubFilled /></Box><Typography fontWeight={700}>Github: </Typography>
-        <Link href={`https://github.com/${nickname}`} sx={{ textDecoration: "none" }}>
+        <Link href={`https://github.com/${nickname}`} target="_blank" sx={{ textDecoration: "none" }} >
           <Typography>https://github.com/{nickname}</Typography>
         </Link>
       </Stack>
