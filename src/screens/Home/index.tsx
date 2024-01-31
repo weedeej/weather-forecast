@@ -38,7 +38,7 @@ export function Home() {
   let main = <></>;
   switch (content) {
     case PageContent.HOME:
-      main = <HomeContent setWeatherForecast={updateWeatherForecast} displayWeather={displayWeather}/>
+      main = <HomeContent setWeatherForecast={updateWeatherForecast} displayWeather={displayWeather} forecast={weatherForecast}/>
       break;
     case PageContent.WEATHER:
       main = <Weather forecast={weatherForecast}/>
