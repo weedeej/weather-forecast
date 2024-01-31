@@ -14,8 +14,7 @@ export function NavBar() {
       }
     });
   }
-
-  console.log(isAuthenticated)
+  
   return (
     <>
       <Stack gap={2} p={1} width="100%">
@@ -26,7 +25,7 @@ export function NavBar() {
               Weather Forecast
             </Typography>
           </Stack>
-          { <Button color="error" variant="contained" onClick={onLogout}>Logout</Button> }
+          { isAuthenticated && <Button color="error" variant="contained" onClick={onLogout}>Logout</Button> }
         </Stack>
         <Divider/>
       </Stack>
