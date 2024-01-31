@@ -59,4 +59,4 @@ export function Home() {
   );
 }
 
-export default {} // For react --isolatedmodules warning
+export {} // for --isolatedModules error
