@@ -62,5 +62,3 @@ export function Home() {
     </Stack>
   );
 }
-
-export {} // for --isolatedModules error

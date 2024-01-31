@@ -58,5 +58,3 @@ export function Weather(props: WeatherProps) {
     </Stack>
   )
 }
-
-export {} // for --isolatedModules error
