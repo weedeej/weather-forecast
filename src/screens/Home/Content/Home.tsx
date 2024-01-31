@@ -1,5 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react"
-import { Button, Checkbox, CircularProgress, FormControlLabel, Link, MenuItem, Select, Stack, TextField, Typography } from "@mui/material";
+import { Box, Button, Checkbox, CircularProgress, FormControlLabel, Link, MenuItem, Select, Stack, TextField, Typography } from "@mui/material";
 import { Forecast } from "../../../types";
 import { useState } from "react";
 import { fetchForecast } from "../../../utils";
@@ -42,7 +42,7 @@ export function HomeContent(props: HomeContentProps) {
     <Stack gap={1}>
       <Typography fontWeight={700}>Welcome Back, {name}!</Typography>
       <Stack direction="row" gap={1} alignItems="center">
-        <IconBrandGithubFilled /><Typography fontWeight={700}>Github: </Typography>
+        <Box sx={{display: {xs: "none", md: "block"}}}><IconBrandGithubFilled /></Box><Typography fontWeight={700}>Github: </Typography>
         <Link href={`https://github.com/${nickname}`} sx={{ textDecoration: "none" }}>
           <Typography>https://github.com/{nickname}</Typography>
         </Link>
@@ -62,12 +62,13 @@ export function HomeContent(props: HomeContentProps) {
               </Select>
             </Stack>
           </Stack>
-          <Stack direction="row" gap={2} justifyContent="space-between" alignItems="center">
+          <Stack direction="row" gap={1} justifyContent="space-between" alignItems="center" flexWrap="wrap-reverse">
             <Button
               type="submit"
               variant="contained"
               disabled={isLoading}
-              startIcon={isLoading ? <CircularProgress size={16} /> : <IconSearch size={16} />}>
+              startIcon={isLoading ? <CircularProgress size={16} /> : <IconSearch size={16} />}
+              >
               Display Weather
             </Button>
             <FormControlLabel
