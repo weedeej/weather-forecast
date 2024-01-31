@@ -1,6 +1,11 @@
 import { apiBaseUrl, weatherApiKey } from "../constants";
 import { GeoData } from "../types";
 
+/**
+ * Sends a request to http://api.openweathermap.org for geodata of cityname
+ * @param cityName
+ * @returns GeoData list
+ */
 export async function getLongLat(cityName: string) {
   let res: Response | undefined;
   try {

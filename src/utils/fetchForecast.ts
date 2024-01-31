@@ -2,6 +2,11 @@ import { apiBaseUrl, weatherApiKey } from "../constants";
 import { Forecast } from "../types";
 import { getLongLat } from "./getLongLat";
 
+/**
+ * Sends a request to http://api.openweathermap.org for forecast
+ * @param cityName
+ * @returns Forecast object
+ */
 export async function fetchForecast(cityName: string) {
   const geoData = await getLongLat(cityName);
   const {lon, lat} = geoData[0];
