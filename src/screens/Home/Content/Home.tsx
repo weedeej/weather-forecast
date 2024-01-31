@@ -1,7 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react"
 import { Button, CircularProgress, Stack, TextField, Typography } from "@mui/material";
 import { Forecast } from "../../../types";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { fetchForecast } from "../../../utils";
 
 type HomeContentProps = {

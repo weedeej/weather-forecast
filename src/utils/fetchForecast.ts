@@ -1,5 +1,5 @@
 import { apiBaseUrl, weatherApiKey } from "../constants";
-import { Forecast, GeoData } from "../types";
+import { Forecast } from "../types";
 import { getLongLat } from "./getLongLat";
 
 export async function fetchForecast(cityName: string) {

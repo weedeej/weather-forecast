@@ -1,5 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { Box, Button, CircularProgress, Stack, Typography } from "@mui/material";
+import { Button, CircularProgress, Stack } from "@mui/material";
 import { useState } from "react";
 import { HomeContent, Landing, Weather } from "./Content";
 import { Forecast } from "../../types";
@@ -58,3 +58,5 @@ export function Home() {
     </Stack>
   );
 }
+
+export default {} // For react --isolatedmodules warning
