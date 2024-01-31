@@ -1,1 +1,1 @@
-export const weatherApiKey = process.env.OPENWEATHER_API_KEY! // openweathermap api key
+export const weatherApiKey = process.env.REACT_APP_OPENWEATHER_API_KEY! // openweathermap api key
