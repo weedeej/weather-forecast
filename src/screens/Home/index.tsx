@@ -1,5 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { Button, CircularProgress, Divider, IconButton, Stack } from "@mui/material";
+import { Button, CircularProgress, Divider, Stack } from "@mui/material";
 import { useState } from "react";
 import { HomeContent, Landing, Weather } from "./Content";
 import { Forecast } from "../../types";
@@ -56,8 +56,8 @@ export function Home() {
         {
           isAuthenticated && (
             <Stack direction="row" width="100%" gap={0} alignItems="center" justifyContent="center">
-              <Button variant={content == PageContent.LANDING ? "contained" : "text"} sx={{ borderRadius: 0 }} startIcon={<IconNews />} onClick={onBackClick}>LANDING</Button>
-              <Button variant={content == PageContent.HOME ? "contained" : "text"} sx={{ borderRadius: 0 }} startIcon={<IconHome />} onClick={onHomeClick}>DASHBOARD</Button>
+              <Button variant={content === PageContent.LANDING ? "contained" : "text"} sx={{ borderRadius: 0 }} startIcon={<IconNews />} onClick={onBackClick}>LANDING</Button>
+              <Button variant={content === PageContent.HOME ? "contained" : "text"} sx={{ borderRadius: 0 }} startIcon={<IconHome />} onClick={onHomeClick}>DASHBOARD</Button>
             </Stack>
           )
         }
