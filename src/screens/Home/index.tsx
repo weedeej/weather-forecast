@@ -49,7 +49,7 @@ export function Home() {
       break;
   }
 
-  if (isLoading) return <CircularProgress />;
+  if (isLoading) return <Stack direction="row" justifyContent="center" p={5}><CircularProgress/></Stack>;
   return (
     <Stack gap={2}>
       <Stack direction="row" justifyContent="space-between" gap={2}>
