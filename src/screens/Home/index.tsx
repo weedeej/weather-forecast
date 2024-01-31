@@ -31,10 +31,14 @@ export function Home() {
     setWeatherForecast(forecast);
   }
 
+  function displayWeather() {
+    setContent(PageContent.WEATHER);
+  }
+
   let main = <></>;
   switch (content) {
     case PageContent.HOME:
-      main = <HomeContent setWeatherForecast={updateWeatherForecast}/>
+      main = <HomeContent setWeatherForecast={updateWeatherForecast} displayWeather={displayWeather}/>
       break;
     case PageContent.WEATHER:
       main = <Weather forecast={weatherForecast}/>
