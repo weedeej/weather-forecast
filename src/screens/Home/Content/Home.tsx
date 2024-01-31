@@ -22,6 +22,7 @@ export function HomeContent (props: HomeContentProps) {
 
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (!cityInput) return;
     setIsLoading(true);
     fetchForecast(cityInput)
       .then(setWeatherForecast)
