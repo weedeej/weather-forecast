@@ -4,6 +4,7 @@ import { Forecast } from "../../../types";
 import { useState } from "react";
 import { fetchForecast } from "../../../utils";
 import { IconHelpCircleFilled, IconSearch } from "@tabler/icons-react";
+import { Weather } from "./Weather";
 
 type HomeContentProps = {
   setWeatherForecast: (forecast: Forecast | null) => void;
@@ -15,6 +16,7 @@ export function HomeContent(props: HomeContentProps) {
   const [cityInput, setCityInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [forecastLimit, setForecastLimit] = useState<number>(5);
+  const [isInPageRendering, setIsInpageRendering] = useState(false);
   const { user, isAuthenticated } = useAuth0();
 
   if (!isAuthenticated || !user) {
@@ -32,7 +34,7 @@ export function HomeContent(props: HomeContentProps) {
       .catch(alert)
       .finally(() => {
         setIsLoading(false);
-        displayWeather();
+        if (!isInPageRendering) displayWeather();
       });
   }
 
@@ -43,7 +45,7 @@ export function HomeContent(props: HomeContentProps) {
       <form onSubmit={onSubmit} style={{ width: "100%" }}>
         <Stack gap={1} width="100%">
           <Stack direction="row" gap={2}>
-            <TextField label="City" placeholder="Input City Name" onChange={(e) => setCityInput(e.target.value)} fullWidth/>
+            <TextField label="City" placeholder="Input City Name" onChange={(e) => setCityInput(e.target.value)} fullWidth />
             <Stack direction="row" gap={1} alignItems="center">
               <Typography fontWeight={700}>
                 Limit:
@@ -56,11 +58,23 @@ export function HomeContent(props: HomeContentProps) {
             </Stack>
           </Stack>
           <Stack direction="row" justifyContent="space-between" alignItems="center">
-            <FormControlLabel title="Renders the result in this page" control={<Checkbox />} label="In-Page Rendering" />
-            <Button type="submit" variant="contained" disabled={isLoading} startIcon={isLoading ? <CircularProgress size={16}/> : <IconSearch size={16}/>}>Display Weather</Button>
+            <FormControlLabel
+              title="Renders the result in this page"
+              control={<Checkbox value={isInPageRendering} onChange={(_, checked) => setIsInpageRendering(checked)} />}
+              label="In-Page Rendering" />
+            <Button
+              type="submit"
+              variant="contained"
+              disabled={isLoading}
+              startIcon={isLoading ? <CircularProgress size={16} /> : <IconSearch size={16} />}>
+              Display Weather
+            </Button>
           </Stack>
         </Stack>
       </form>
+      {
+        (isInPageRendering && forecast) && <Weather forecast={forecast}/>
+      }
     </Stack>
   )
 }
